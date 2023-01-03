@@ -34,3 +34,51 @@ In almost all program languages, there is a built in data structure that manages
 
 - Base case
 - Diferent input
+
+## Where things go wrong
+
+- No base case
+- Forgetting to return or returning the wrong thing
+- Maximum call stack size exceeded!
+
+## Helper method recursion
+
+This is just a pattern where we have an outer function that's not recursive, which calls an inner function which is recursive
+
+```js
+function outer(input) {
+	var outerScopedVariable = [];
+
+	function helper(helperInput) {
+		// modify the outerScopedVariable ...
+		helper(helperInput--);
+	}
+
+	helper(input);
+
+	return outerScopedVariable;
+}
+```
+
+## Pure recursion
+
+- For arrays, use methods like **slice**, **the spread operator**, and **concat** that make copies of arrays so you do not mutate them
+- Remember that strings are immutable so you will need to use methods like **slice**, **substr**, or **substring** to make copies of strings
+- To make copies of objects use **Object.assign** or the **spread operator**
+
+```js
+function collectOddValues(arr) {
+	let newArr = [];
+
+	if (arr.length === 0) {
+		return newArr;
+	}
+
+	if (arr[0] % 2 !== 0) {
+		newArr.push(arr[0]);
+	}
+
+	newArr = newArr.concat(collectOddValues(arr.slice(1)));
+	return newArr;
+}
+```
