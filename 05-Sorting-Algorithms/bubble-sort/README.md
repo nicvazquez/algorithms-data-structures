@@ -53,4 +53,4 @@ const swap = (arr, idx1, idx2) => {
 - Return the sorted array
 
 ## Big O Complexity
-- O(n^2)
+- The Big O complexity of the bubble sort algorithm is O(n^2). This is because the algorithm has two nested loops that each iterate over the input array of length n. 
